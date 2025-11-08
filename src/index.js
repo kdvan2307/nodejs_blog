@@ -5,6 +5,10 @@ const app = express();
 const port = 3000;
 const path = require('path');
 const route = require('./route');
+const db = require('./config/db');
+
+//connect to db
+db.connect();
 
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -14,17 +18,15 @@ app.use(morgan('combined'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 //Template engine
-app.engine(
-    'hbs',
-    handlebars.engine({
-        extname: '.hbs',
-    }),
-);
+app.engine('hbs', handlebars.engine({
+    extname: '.hbs'
+}));
+
 app.set('view engine', 'hbs');
-app.set('views', path.join(__dirname, 'resources', 'views'));
+app.set('views', path.join(__dirname, 'resources','views'));
 
 route(app);
 
 app.listen(port, () => {
-    console.log(`✅ Server is running at http://localhost:${port}`);
+  console.log(`Server is running at http://localhost:${port}`);
 });

@@ -6,8 +6,7 @@
   "scripts": {
     "start": "nodemon --inspect src/index.js",
     "watch": "sass --watch src/resources/scss:src/public/css",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "prepare": "husky"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
@@ -23,24 +22,17 @@
     "url": "https://github.com/kdvan2307/nodejs_blog/issues"
   },
   "homepage": "https://github.com/kdvan2307/nodejs_blog#readme",
-  "lint-staged": {
-    "src/**/*.{js,scss,json}": "prettier --single-quote --trailing-comma all --tab-width 4 --write"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
   "dependencies": {
     "express": "^5.1.0",
-    "express-handlebars": "^8.0.3"
+    "express-handlebars": "^8.0.3",
+    "mongoose": "^8.19.3",
+    "mongoose-slug-generator": "^1.0.4"
   },
   "devDependencies": {
     "husky": "^9.1.7",
     "lint-staged": "^16.2.6",
     "morgan": "^1.10.1",
     "nodemon": "^3.1.10",
-    "prettier": "^3.6.2",
     "sass": "^1.93.2"
   }
 }
