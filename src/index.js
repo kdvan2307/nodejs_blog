@@ -6,6 +6,10 @@ const port = 3000;
 const path = require('path');
 const route = require('./route');
 const db = require('./config/db');
+const methodOverride = require('method-override');
+
+//override with POST having ?_method=DELETE
+app.use(methodOverride('_method'));
 
 //connect to db
 db.connect();
@@ -19,7 +23,10 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 //Template engine
 app.engine('hbs', handlebars.engine({
-    extname: '.hbs'
+    extname: '.hbs',
+    helpers: {
+        sum: (a, b) => a + b,
+    },
 }));
 
 app.set('view engine', 'hbs');
